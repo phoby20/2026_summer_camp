@@ -14,7 +14,8 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{background:#02141f}
-  body{font-family:'Zen Kaku Gothic New',sans-serif;color:#eafcff;-webkit-font-smoothing:antialiased}
+  body{font-family:'Zen Kaku Gothic New',sans-serif;color:#eafcff;-webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;text-size-adjust:100%}
 
   .stage{position:relative;width:100%;min-height:100vh;min-height:100dvh;overflow:hidden;
     background:
@@ -31,50 +32,53 @@
   .shaft2{position:absolute;top:0;left:50%;transform:translateX(-50%);
     width:clamp(110px,15vw,230px);height:120vh;
     background:linear-gradient(180deg, rgba(190,255,250,0), rgba(190,255,250,.34) 17%, rgba(150,245,240,.10) 70%, transparent);
-    filter:blur(5px);mix-blend-mode:screen;animation:shimmer 5s ease-in-out infinite;}
+    filter:blur(5px);mix-blend-mode:screen;animation:shimmer 5s ease-in-out infinite;will-change:transform,opacity;}
   @keyframes shimmer{0%,100%{opacity:.7;transform:translateX(-50%) scaleX(1)}50%{opacity:1;transform:translateX(-50%) scaleX(1.25)}}
-  .gl{position:absolute;border-radius:50%;background:radial-gradient(circle,#dffffb,rgba(120,240,235,0) 70%);filter:blur(.5px);animation:fall linear infinite}
+  .gl{position:absolute;border-radius:50%;background:radial-gradient(circle,#dffffb,rgba(120,240,235,0) 70%);filter:blur(.5px);animation:fall linear infinite;will-change:transform,opacity}
   @keyframes fall{0%{transform:translateY(-60px);opacity:0}15%{opacity:.9}100%{transform:translateY(128vh);opacity:0}}
 
-  .content{position:relative;z-index:3;max-width:860px;margin:0 auto;min-height:118vh;min-height:118dvh;
+  .content{position:relative;z-index:3;max-width:860px;margin:0 auto;min-height:106vh;min-height:106dvh;
     display:flex;flex-direction:column;align-items:center;text-align:center;
-    padding:clamp(48px,8vh,110px) clamp(22px,5vw,60px);}
+    padding:clamp(32px,5vh,72px) clamp(22px,5vw,60px);}
 
-  .kick{font-weight:500;letter-spacing:.5em;padding-left:.5em;font-size:clamp(12px,2.4vw,20px);
+  .kick{font-weight:500;letter-spacing:.5em;padding-left:.5em;font-size:clamp(10px,0.9vw,11px);
     color:#6fe7df;text-transform:uppercase;text-shadow:0 0 20px rgba(80,230,220,.6)}
-  .kick2{margin-top:clamp(10px,1.6vw,16px);font-weight:300;font-size:clamp(18px,3.6vw,30px);color:#bfeef0;letter-spacing:.04em}
+  .kick2{margin-top:clamp(8px,1.2vw,12px);font-weight:300;font-size:clamp(13px,1.3vw,16px);color:#bfeef0;letter-spacing:.04em}
 
-  .title{margin-top:clamp(22px,3.2vw,46px);font-family:'Anton';font-size:clamp(66px,13.5vw,150px);
+  .title{margin-top:clamp(18px,2.4vw,36px);font-family:'Anton';font-size:clamp(46px,12vw,96px);
     line-height:.97;letter-spacing:.02em;color:#f4ffff;
     text-shadow:0 0 40px rgba(90,225,220,.55),0 8px 30px rgba(0,0,0,.5)}
   .title .b{display:block;padding-bottom:.12em;background:linear-gradient(180deg,#eafffd,#5fe3da);
     -webkit-background-clip:text;background-clip:text;color:transparent}
   @media (min-width:820px){
-    .title{font-size:clamp(120px,12.5vw,176px)}
+    .title{font-size:clamp(72px,7.5vw,100px)}
     .title .b{display:inline;padding-bottom:.04em}
   }
 
-  .verse{margin-top:clamp(26px,3.6vw,48px);max-width:min(92vw,620px);font-weight:300;
-    font-size:clamp(15px,2.5vw,22px);line-height:1.95;color:#ffe23d}
+  .verse{margin-top:clamp(20px,2.8vw,36px);max-width:min(92vw,620px);font-weight:300;
+    font-size:clamp(12px,1.2vw,14px);line-height:1.95;color:#ffe23d}
   .verse .em{color:#fff27a;font-weight:500}
-  .ref{margin-top:clamp(10px,1.5vw,18px);font-weight:500;font-size:clamp(14px,2.2vw,20px);color:#ffd83a;letter-spacing:.08em}
+  .mob-br{display:none}
+  @media (max-width:639px){.mob-br{display:block}}
+  .ref{margin-top:clamp(8px,1.0vw,12px);font-weight:500;font-size:clamp(11px,1.0vw,13px);color:#ffd83a;letter-spacing:.08em}
 
-  .cta{display:inline-flex;align-items:center;gap:.5em;margin-top:clamp(38px,5.5vw,66px);
-    font-weight:700;font-size:clamp(11px,1.65vw,13.5px);letter-spacing:.06em;color:#03222e;text-decoration:none;
+  .cta{display:inline-flex;align-items:center;gap:.4em;margin-top:clamp(36px,5vw,60px);
+    font-weight:700;font-size:clamp(11px,0.9vw,12px);letter-spacing:.06em;color:#02141f;text-decoration:none;
     background:linear-gradient(180deg,#7af0e4,#34cabd);
-    padding:clamp(8px,1.2vw,11px) clamp(20px,3.3vw,32px);border-radius:60px;
-    box-shadow:0 8px 22px rgba(50,210,200,.32), inset 0 0 0 1px rgba(150,255,247,.45);
-    transition:transform .16s ease, box-shadow .16s ease;}
-  .cta:hover{transform:translateY(-3px);box-shadow:0 18px 46px rgba(50,210,200,.55), inset 0 0 0 1px rgba(150,255,247,.65)}
+    padding:clamp(7px,0.7vw,8px) clamp(14px,1.8vw,18px);border-radius:60px;
+    box-shadow:0 4px 14px rgba(50,210,200,.32), inset 0 0 0 1px rgba(150,255,247,.45);
+    transition:transform .16s ease, box-shadow .16s ease;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(50,210,200,.55), inset 0 0 0 1px rgba(150,255,247,.65)}
   .cta:active{transform:translateY(-1px)}
   .cta .arr{transition:transform .16s ease}
-  .cta:hover .arr{transform:translateX(5px)}
+  .cta:hover .arr{transform:translateX(4px)}
 
-  .lect{margin-top:clamp(14px,2vw,22px);font-weight:500;font-size:clamp(15px,2.5vw,21px);letter-spacing:.06em;color:#cfeef0}
-  .foot{margin-top:auto;padding-top:clamp(28px,4vw,50px);display:flex;flex-direction:column;gap:clamp(10px,1.5vw,16px);align-items:center}
-  .dates{font-family:'Anton';font-size:clamp(16px,3vw,26px);letter-spacing:.1em;color:#eafcff}
-  .hair{width:78px;height:2px;background:linear-gradient(90deg,transparent,#5fe3da,transparent)}
-  .venue{font-weight:500;font-size:clamp(14px,2.8vw,22px);letter-spacing:.16em;padding-left:.16em;color:#9fe6e2}
+  .lect{margin-top:clamp(10px,1.4vw,16px);font-weight:500;font-size:clamp(12px,1.1vw,14px);letter-spacing:.06em;color:#cfeef0}
+  .foot{margin-top:auto;padding-top:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:clamp(8px,1.0vw,12px);align-items:center}
+  .dates{font-family:'Anton';font-size:clamp(13px,1.3vw,16px);letter-spacing:.1em;color:#eafcff}
+  .hair{width:60px;height:1px;background:linear-gradient(90deg,transparent,#5fe3da,transparent)}
+  .venue{font-weight:500;font-size:clamp(11px,1.1vw,14px);letter-spacing:.16em;padding-left:.16em;color:#9fe6e2}
 </style>
 </head>
 <body>
@@ -88,7 +92,7 @@
       <div class="kick">Summer Camp 2026</div>
       <div class="kick2">いのちの川にひたる3日間</div>
       <h1 class="title">OVER<span class="b">FLOW</span></h1>
-      <p class="verse">その腹から<span class="em">生ける水が川となって</span>流れ出るであろう。</p>
+      <p class="verse">その腹から<span class="em">生ける水が川となって</span><br class="mob-br">流れ出るであろう。</p>
       <div class="ref">ヨハネ 7:38</div>
       <div class="lect">講師：小川遼 牧師</div>
 
@@ -106,7 +110,7 @@
 
 <script>
   const g=document.getElementById('glints');
-  const N = window.innerWidth < 640 ? 18 : 30;
+  const N = window.innerWidth < 640 ? 12 : 30;
   for(let i=0;i<N;i++){const d=document.createElement('div');d.className='gl';
     const s=2+Math.random()*5;d.style.width=s+'px';d.style.height=(s*2.4)+'px';
     d.style.left=(50+(Math.random()*24-12))+'%';
